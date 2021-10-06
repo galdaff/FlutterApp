@@ -10,9 +10,8 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: BlocProvider(
-      create: (context) =>
-          RegisterBloc(RegisterInitState(), RegisterRepository()),
-      child: RegisterBody(),
-    ));
+            create: (context) =>
+                RegisterBloc(RegisterInitState(), RegisterRepository()),
+            child: RegisterBody()));
   }
 }
