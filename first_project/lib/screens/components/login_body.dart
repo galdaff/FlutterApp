@@ -1,6 +1,7 @@
 import 'package:first_project/bloc/login/login_bloc.dart';
 import 'package:first_project/bloc/login/login_event.dart';
 import 'package:first_project/bloc/login/login_state.dart';
+import 'package:first_project/screens/home_screen.dart';
 import 'package:first_project/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -163,7 +164,7 @@ class _LoginBodyState extends State<LoginBody> {
           // });
           Future.delayed(Duration.zero, () async {
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => RegisterScreen()));
+                context, MaterialPageRoute(builder: (_) => HomeScreen()));
           });
         } else if (state is LoginErrorState) {
           return Text(state.message);
