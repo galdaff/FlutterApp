@@ -1,24 +1,25 @@
 import 'dart:convert';
+import 'package:first_project/models/products_model.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:first_project/utils/api_base.dart';
 
 class HomeRepository {
-  home(String productName) async {
-    var uri = Uri.parse(url + 'api/products');
-    Map<String, dynamic> body = {"Name": productName};
-    var headers = {
-      'Content-Type': 'application/json',
-    };
+  Future<ProductModel> fetchProduct(int pageSize, int pageIndex) async {
+    //api nó trả về 1 cái obj chứ k phải list, tên class là productmodel
+    var uri = Uri.parse(url +
+        'api/products?PageSize=' +
+        pageSize.toString() +
+        '&PageIndex=' +
+        pageIndex.toString());
 
-    final response =
-        await http.post(uri, headers: headers, body: jsonEncode(body));
+    final response = await http.get(uri);
 
-    var convertedDataToJson = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      return convertedDataToJson;
+      print("Body: " + response.body);
+      return ProductModel.fromJson(jsonDecode(response.body));
     } else {
-      return 'failed';
+      throw Exception('Failed');
     }
   }
 }

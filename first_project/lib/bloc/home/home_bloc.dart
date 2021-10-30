@@ -4,23 +4,37 @@ import 'package:first_project/repo/home_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeRepository repository;
-  HomeBloc(HomeState initialState, this.repository) : super(initialState);
+  final HomeRepository repository;
+
+  HomeBloc(this.repository, HomeState initialState)
+      : assert(repository != null),
+        super(initialState);
 
   @override
   Stream<HomeState> mapEventToState(HomeEvent event) async* {
-    if (event is StartEvent) {
-      yield HomeInitState();
-    } else if (event is SearchButtonPressed) {
-      yield HomeLoadingState();
-
-      var data = await repository.home(event.productName);
-      if (data['Code'] == '200') {
-        print('test data: ' + data['Code']);
-        yield HomeSuccess();
+    if (event is GetShoesEvent) {
+      //startevent là gọi api luôn
+      try {
+        var data =
+            await repository.fetchProduct(event.pageSize, event.pageIndex);
+        yield HomeSuccess(
+            productModel:
+                data); // api trả về obj, làm thì nhìn coi api nó quăng ra cái gì
+      } catch (e) {
+        yield HomeEmptyState();
       }
-    } else {
-      yield HomeErrorState(message: 'auth error');
+      // yield HomeLoadingState();
+      // try {
+      //   final List<Item> items =
+      //       await repository.fetchProduct(event.pageSize, event.pageIndex);
+      //   if (items.length == 0) {
+      //     yield HomeEmptyState();
+      //   } else {
+      //     yield HomeSuccess(items: items);
+      //   }
+      // } catch (_) {
+      //   yield HomeErrorState();
+      // }
     }
   }
 }

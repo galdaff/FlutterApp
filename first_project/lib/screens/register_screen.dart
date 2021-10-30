@@ -9,9 +9,11 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: BlocProvider(
-            create: (context) =>
-                RegisterBloc(RegisterInitState(), RegisterRepository()),
-            child: RegisterBody()));
+      body: BlocProvider(
+        create: (context) =>
+            RegisterBloc(RegisterInitState(), RegisterRepository()),
+        child: RegisterBody(),
+      ),
+    );
   }
 }
