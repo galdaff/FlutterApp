@@ -2,6 +2,7 @@ import 'package:first_project/bloc/home/home_bloc.dart';
 import 'package:first_project/bloc/home/home_event.dart';
 import 'package:first_project/bloc/home/home_state.dart';
 import 'package:first_project/repo/home_repo.dart';
+import 'package:first_project/screens/add_product_screen.dart';
 // import 'package:first_project/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,24 @@ class _HomeBodyState extends State<HomeBody> {
                           ); //giờ t muốn lấy tên product ra thì sao, thửu coi
                         },
                       ),
-                    ), //phai k, k//sao đếm dc length của list, gõ thử coi
+                    ),
+                    Container(
+                      width: 150.0,
+                      child: ElevatedButton(
+                        child: Text('Add Product'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => AddProductScreen()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.orangeAccent,
+                            textStyle: TextStyle(
+                                fontSize: 20.0, fontWeight: FontWeight.bold)),
+                      ),
+                    ),
                   ],
                 );
               }

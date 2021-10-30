@@ -230,7 +230,7 @@ class _AddProductBodyState extends State<AddProductBody> {
                               Container(
                                 width: 150.0,
                                 child: ElevatedButton(
-                                  child: Text('Register'),
+                                  child: Text('Add'),
                                   onPressed: () {
                                     print(nameController.text);
                                     print(manuController.text);
