@@ -44,6 +44,11 @@ class _ViewProfileBodyState extends State<ViewProfileBody> {
                             state.user.content.fullName.toString() +
                             "Address: " +
                             state.user.content.address.toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                          color: Colors.orangeAccent,
+                        ),
                       ),
                     ),
                   ],
