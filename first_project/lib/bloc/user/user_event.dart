@@ -8,6 +8,6 @@ class UserEvent extends Equatable {
 class StartEvent extends UserEvent {}
 
 class GetUserDetailEvent extends UserEvent {
-  final String id;
+  Map<String, dynamic> id;
   GetUserDetailEvent({this.id});
 }

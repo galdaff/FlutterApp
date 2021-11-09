@@ -4,6 +4,8 @@ import 'package:first_project/bloc/user/user_state.dart';
 import 'package:first_project/repo/user_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ViewProfileBody extends StatefulWidget {
   final UserRepository repository;
@@ -15,12 +17,16 @@ class ViewProfileBody extends StatefulWidget {
 
 class _ViewProfileBodyState extends State<ViewProfileBody> {
   UserBloc userBloc;
+
   @override
-  void initState() {
+  void initState() async {
     // TODO: implement initState
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    // String token = preferences.getString("token");
+    Map<String, dynamic> decodedToken =
+        JwtDecoder.decode(preferences.getString("token"));
     userBloc = BlocProvider.of<UserBloc>(context);
-    userBloc
-        .add(GetUserDetailEvent(id: "7581B5A9-617F-44DD-2546-08D97387D4BF"));
+    userBloc.add(GetUserDetailEvent(id: decodedToken));
     super.initState();
   }
 
