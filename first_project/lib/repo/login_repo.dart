@@ -18,6 +18,7 @@ class LoginRepository {
 
     var convertedDataToJson = jsonDecode(response.body);
     if (response.statusCode == 200) {
+      print("Login ok");
       return convertedDataToJson;
     } else {
       return 'failed';

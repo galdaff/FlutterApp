@@ -2,6 +2,8 @@ import 'package:first_project/bloc/home/home_bloc.dart';
 import 'package:first_project/bloc/home/home_event.dart';
 import 'package:first_project/bloc/home/home_state.dart';
 import 'package:first_project/repo/home_repo.dart';
+import 'package:first_project/screens/add_product_screen.dart';
+import 'package:first_project/screens/view_profile_screen.dart';
 // import 'package:first_project/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,8 +32,9 @@ class _HomeBodyState extends State<HomeBody> {
     //muốn cho nó load tụ động khiu voo trang home thì add cái event vô trong cái initstate này, hàm initstate nó tự chạy lần dầu tiên
     // TODO: implement initState
     homeBloc = BlocProvider.of<HomeBloc>(context);
-    homeBloc.add(GetShoesEvent(
-        pageIndex: 1, pageSize: 10)); //mốt mỗi cái đoit tên dùm cái
+    homeBloc.add(
+      GetShoesEvent(pageIndex: 1, pageSize: 10),
+    ); //mốt mỗi cái đoit tên dùm cái
     super.initState();
   }
 
@@ -63,7 +66,43 @@ class _HomeBodyState extends State<HomeBody> {
                           ); //giờ t muốn lấy tên product ra thì sao, thửu coi
                         },
                       ),
-                    ), //phai k, k//sao đếm dc length của list, gõ thử coi
+                    ),
+                    Container(
+                      width: 150.0,
+                      child: ElevatedButton(
+                        child: Text('Add Product'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => AddProductScreen()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.orangeAccent,
+                          textStyle: TextStyle(
+                              fontSize: 20.0, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 150.0,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => ViewProfileScreen()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.orangeAccent,
+                          textStyle: TextStyle(
+                              fontSize: 20.0, fontWeight: FontWeight.bold),
+                        ),
+                        child: Text('View Profile'),
+                      ),
+                    ),
                   ],
                 );
               }
