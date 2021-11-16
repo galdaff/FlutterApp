@@ -33,7 +33,7 @@ class _HomeBodyState extends State<HomeBody> {
     // TODO: implement initState
     homeBloc = BlocProvider.of<HomeBloc>(context);
     homeBloc.add(
-      GetShoesEvent(pageIndex: 1, pageSize: 10),
+      GetShoesEvent(pageIndex: 1, pageSize: 5),
     ); //mốt mỗi cái đoit tên dùm cái
     super.initState();
   }
@@ -54,6 +54,7 @@ class _HomeBodyState extends State<HomeBody> {
                   children: <Widget>[
                     Container(
                       child: ListView.builder(
+                        shrinkWrap: true,
                         itemCount: state.productModel.content.items.length,
                         itemBuilder: (BuildContext context, int index) {
                           return ListTile(
