@@ -32,7 +32,7 @@ class _HomeBodyState extends State<HomeBody> {
     //muốn cho nó load tụ động khiu voo trang home thì add cái event vô trong cái initstate này, hàm initstate nó tự chạy lần dầu tiên
     homeBloc = BlocProvider.of<HomeBloc>(context);
     homeBloc.add(
-      GetShoesEvent(pageIndex: 1, pageSize: 10),
+      GetShoesEvent(pageIndex: 1, pageSize: 5),
     ); //mốt mỗi cái đoit tên dùm cái
     super.initState();
   }
