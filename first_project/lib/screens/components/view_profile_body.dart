@@ -20,13 +20,13 @@ class _ViewProfileBodyState extends State<ViewProfileBody> {
 
   @override
   void initState() async {
-    // TODO: implement initState
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    // String token = preferences.getString("token");
+    String token = preferences.getString("token");
     Map<String, dynamic> decodedToken =
         JwtDecoder.decode(preferences.getString("token"));
     userBloc = BlocProvider.of<UserBloc>(context);
-    userBloc.add(GetUserDetailEvent(id: decodedToken));
+    userBloc
+        .add(GetUserDetailEvent(id: "7581B5A9-617F-44DD-2546-08D97387D4BF"));
     super.initState();
   }
 

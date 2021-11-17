@@ -117,7 +117,7 @@ class _LoginBodyState extends State<LoginBody> {
                                   });
                                   loginBloc.add(LoginButtonPressed(
                                       username: username.text,
-                                      password: password.text));
+                                      password: int.parse(password.text)));
                                 }
                               },
                               style: ElevatedButton.styleFrom(

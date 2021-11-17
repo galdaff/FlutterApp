@@ -11,7 +11,7 @@ class StartEvent extends LoginEvent {
 
 class LoginButtonPressed extends LoginEvent {
   final String username;
-  final String password;
+  final int password;
   LoginButtonPressed({this.username, this.password});
 }
 

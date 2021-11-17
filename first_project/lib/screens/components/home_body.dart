@@ -30,7 +30,6 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   void initState() {
     //muốn cho nó load tụ động khiu voo trang home thì add cái event vô trong cái initstate này, hàm initstate nó tự chạy lần dầu tiên
-    // TODO: implement initState
     homeBloc = BlocProvider.of<HomeBloc>(context);
     homeBloc.add(
       GetShoesEvent(pageIndex: 1, pageSize: 10),
@@ -50,10 +49,11 @@ class _HomeBodyState extends State<HomeBody> {
                   child: CircularProgressIndicator(),
                 );
               } else if (state is HomeSuccess) {
-                return Column(
+                return ListView(
                   children: <Widget>[
                     Container(
                       child: ListView.builder(
+                        shrinkWrap: true,
                         itemCount: state.productModel.content.items.length,
                         itemBuilder: (BuildContext context, int index) {
                           return ListTile(
