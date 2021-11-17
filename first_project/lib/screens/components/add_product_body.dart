@@ -42,6 +42,7 @@ class _AddProductBodyState extends State<AddProductBody> {
             backgroundColor: Colors.white,
             body: SafeArea(
               child: ListView(
+                shrinkWrap: true,
                 children: [
                   AddDetail(height),
                 ],
@@ -70,7 +71,7 @@ class _AddProductBodyState extends State<AddProductBody> {
   // ignore: non_constant_identifier_names
   Container AddDetail(double height) {
     return Container(
-      height: height,
+      height: height - 20,
       alignment: Alignment.center,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -85,9 +86,9 @@ class _AddProductBodyState extends State<AddProductBody> {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 15.0),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 50.0),
-            child: Column(
+          Expanded(
+            flex: 3,
+            child: ListView(
               children: <Widget>[
                 TextField(
                   controller: nameController,
