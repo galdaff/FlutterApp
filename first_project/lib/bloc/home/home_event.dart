@@ -11,3 +11,8 @@ class GetShoesEvent extends HomeEvent {
 
   GetShoesEvent({this.pageIndex, this.pageSize});
 }
+
+class GetShoesDetail extends HomeEvent {
+  final String id;
+  GetShoesDetail({this.id});
+}

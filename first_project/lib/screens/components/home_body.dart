@@ -3,6 +3,7 @@ import 'package:first_project/bloc/home/home_event.dart';
 import 'package:first_project/bloc/home/home_state.dart';
 import 'package:first_project/repo/home_repo.dart';
 import 'package:first_project/screens/add_product_screen.dart';
+import 'package:first_project/screens/product_detail_screen.dart';
 import 'package:first_project/screens/view_profile_screen.dart';
 // import 'package:first_project/size_config.dart';
 import 'package:flutter/cupertino.dart';
@@ -57,7 +58,20 @@ class _HomeBodyState extends State<HomeBody> {
                         itemCount: state.productModel.content.items.length,
                         itemBuilder: (BuildContext context, int index) {
                           return ListTile(
-                            leading: Icon(Icons.list),
+                            leading: IconButton(
+                              icon: Icon(Icons.list),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProductDetailScreen(
+                                      productId: state
+                                          .productModel.content.items[index].id,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
                             trailing: Text(state
                                 .productModel.content.items[index].price
                                 .toString()),
