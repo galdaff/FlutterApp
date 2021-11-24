@@ -13,7 +13,7 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => HomeBloc(HomeRepository(), HomeInitState()),
-        child: ProductDetailBody(),
+        child: ProductDetailBody(productID: this.productId),
       ),
     );
   }

@@ -5,16 +5,9 @@ import 'package:first_project/repo/home_repo.dart';
 import 'package:first_project/screens/add_product_screen.dart';
 import 'package:first_project/screens/product_detail_screen.dart';
 import 'package:first_project/screens/view_profile_screen.dart';
-// import 'package:first_project/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-// import 'categories.dart';
-// import 'discount_banner.dart';
-// import 'home_header.dart';
-// import 'popular_product.dart';
-// import 'special_offers.dart';
 
 class HomeBody extends StatefulWidget {
   final HomeRepository homeRepository;
