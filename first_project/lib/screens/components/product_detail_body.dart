@@ -12,7 +12,7 @@ class ProductDetailBody extends StatefulWidget {
 
   @override
   _ProductDetailBodyState createState() =>
-      _ProductDetailBodyState(id: productID);
+      _ProductDetailBodyState(id: productID.toString());
 }
 
 class _ProductDetailBodyState extends State<ProductDetailBody> {
@@ -23,12 +23,13 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
   @override
   void initState() {
     homeBloc = BlocProvider.of<HomeBloc>(context);
-    homeBloc.add(GetShoesDetail(id: id));
+    homeBloc.add(GetShoesDetail(id: id.toString()));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -38,41 +39,27 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              } else if (state is HomeSuccess) {
-                return ListView(
-                  children: <Widget>[
-                    Container(
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemBuilder: (BuildContext context, int index) {
-                          return ListBody(
-                            children: <Widget>[
-                              Container(
-                                child: Text("Name: " +
-                                    state.productDetail.content.name
-                                        .toString()),
-                              ),
-                              Container(
-                                child: Text("Price: " +
-                                    state.productDetail.content.price
-                                        .toString()),
-                              ),
-                              Container(
-                                child: Text("Description: " +
-                                    state.productDetail.content.description
-                                        .toString()),
-                              ),
-                              Container(
-                                child: Text("Category: " +
-                                    state.productDetail.content.category
-                                        .toString()),
-                              ),
-                            ],
-                          );
-                        },
+              } else if (state is ProductSuccess) {
+                return Scaffold(
+                  body: SafeArea(
+                    child: Container(
+                      height: height,
+                      alignment: Alignment.topLeft,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "Shoes Name: " +
+                                state.productDetail.content.name.toString(),
+                            style: TextStyle(
+                              fontSize: 30.0,
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                        ],
                       ),
                     ),
-                  ],
+                  ),
                 );
               }
               return Text("");

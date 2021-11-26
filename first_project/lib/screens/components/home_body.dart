@@ -59,7 +59,8 @@ class _HomeBodyState extends State<HomeBody> {
                                   MaterialPageRoute(
                                     builder: (context) => ProductDetailScreen(
                                       productId: state
-                                          .productModel.content.items[index].id,
+                                          .productModel.content.items[index].id
+                                          .toString(),
                                     ),
                                   ),
                                 );

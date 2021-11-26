@@ -38,7 +38,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (event is GetShoesDetail) {
       try {
         var data = await repository.fetchDetail(event.id);
-        yield HomeSuccess(productDetail: data);
+        yield ProductSuccess(productDetail: data);
       } catch (e) {
         yield HomeEmptyState();
       }
